@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Page</title>
+
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap");
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: blueviolet;
+            margin: 0%;
+            padding: 0%;
+            font-family: "Poppins", sans-serif;
+        }
+
+        .main {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        h1 {
+            color: white;
+            font-size: 60px;
+            margin: 0 20px;
+        }
+
+        #inputtask {
+            min-width: 300px;
+            padding: 10px 15px;
+            border-radius: 10px;
+            border: 0px solid transparent;
+            font-size: 24px;
+            margin-right: 10px;
+            color: blueviolet;
+        }
+
+        #inputtask:focus {
+            outline: none;
+        }
+
+        #addbutton {
+            color: blueviolet;
+            font-weight: 500;
+            font-size: 24px;
+            border-radius: 5px;
+            border: 0px solid transparent;
+            padding: 10px 15px;
+            cursor: pointer;
+            border: 1px solid rgb(255, 255, 255);
+            transition: 0.3s all ease-in-out;
+        }
+
+        #addbutton:hover {
+            background-color: rgba(194, 129, 255, 0.253);
+            color: white;
+            transform: scale(0.97);
+        }
+
+    </style>
+</head>
+<body>
+    <div class="main">
+        <h1>TO DO LIST</h1>
+
+        <form class="form" action="/insertData" method="post">
+            <input name="editId" type="hidden" value="<%= data.id %>" />
+            <input id="inputtask" name="task" type="text" value="<%= data.task %>" />
+            <input id="addbutton" type="submit" value="Update" />
+        </form>
+    
+    </div>
+</body>
+</html>
