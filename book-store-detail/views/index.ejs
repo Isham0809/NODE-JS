@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index Page</title>
+    <link rel="stylesheet" href="../bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+
+</head>
+
+<body>
+    <form action="/insertData" method="post">
+        <div class="container">
+            <div class="d-flex justify-content-center">
+                <div class="pt-5 col-md-10">
+                    <table class="table table-borderless">
+                        <caption class="caption-top text-center text-white py-3">
+                            <h1>Insert Book Data</h1>
+                        </caption>
+                        <tr>
+                            <td class="text-white py-2 fs-4 ps-5">Title</td>
+                            <td class="pe-5">
+                                <input type="text" name="title" class="form-control bg-transparent fs-5 text-white"
+                                    required>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="text-white py-2 fs-4 ps-5">Price</td>
+                            <td class="pe-5"><input type="number" name="price"
+                                    class="form-control bg-transparent fs-5 text-white" required></td>
+                        </tr>
+                        <tr>
+                            <td class="text-white py-2 fs-4 ps-5">Author</td>
+                            <td class="pe-5"><input type="text" name="author"
+                                    class="form-control bg-transparent fs-5 text-white" required></td>
+                        </tr>
+
+                        <tr>
+                            <td class="text-white py-2 fs-4 ps-5">City</td>
+                            <td class="pe-5">
+                                <select name="city" value="city" class="form-select bg-transparent fs-5">
+                                    <option disabled selected> -- Select City -- </option>
+                                    <% let city=['Surat','Pune','Vadodra','Bharuch'] 
+                                    city.map((val,idx)=>{
+                                        %>
+                                        <option value="<%= val %>">
+                                            <%= val %>
+                                        </option>
+                                        <% }) %>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="text-white py-2 fs-4 ps-5">Pages</td>
+                            <td class="pe-5 text-white fs-5">
+                                <input type="radio" name="pages" value="50-100"
+                                    class="form-check-input bg-transparent fs-5"> 50-100
+                                <input type="radio" name="pages" value="100-200"
+                                    class="form-check-input bg-transparent fs-5 ms-2"> 100-200
+                                <input type="radio" name="pages" value="300-400"
+                                    class="form-check-input bg-transparent fs-5 ms-2"> 300-400
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="text-white py-2 fs-4 ps-5">Language</td>
+                            <td class="pe-5 text-white fs-5">
+                                <input type="checkbox" name="language" value="Gujarati"
+                                    class="form-check-input bg-transparent fs-5"> Gujarati
+                                <input type="checkbox" name="language" value="Hindi"
+                                    class="form-check-input bg-transparent fs-5 ms-2"> Hindi
+                                <input type="checkbox" name="language" value="English"
+                                    class="form-check-input bg-transparent fs-5 ms-2"> English
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="text-white py-2 fs-4 ps-5">Description</td>
+                            <td class="pe-5"><textarea name="description"
+                                    class="form-control bg-transparent text-white fs-5" required></textarea></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td><input type="submit" value="ADD BOOK DATA" class="btn btn-outline-light fs-5"></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </form>
+
+
+        <div class="d-flex justify-content-center">
+            <div class="pt-5 col-md-10">
+                <table class="table table-borderless">
+                    <caption class="caption-top text-center text-white py-3">
+                        <h2>Book Data</h2>
+                    </caption>
+                    <tr>
+                        <td class="fs-5 text-center text-white">Title</td>
+                        <td class="fs-5 text-center text-white">Price</td>
+                        <td class="fs-5 text-center text-white">Author</td>
+                        <td class="fs-5 text-center text-white">City</td>
+                        <td class="fs-5 text-center text-white">Pages</td>
+                        <td class="fs-5 text-center text-white">Language</td>
+                        <td class="fs-5 text-center text-white">Description</td>
+                        <td class="fs-5 text-center text-white">Action</td>
+                    </tr>
+
+                    <% data.map((val,idx)=>{ %>
+                        <tr>
+                            <td class="fs-5 text-center text-white">
+                                <%= val.title %>
+                            </td>
+                            <td class="fs-5 text-center text-white">
+                                <%= val.price %>
+                            </td>
+                            <td class="fs-5 text-center text-white">
+                                <%= val.author %>
+                            </td>
+                            <td class="fs-5 text-center text-white">
+                                <%= val.city %>
+                            </td>
+                            <td class="fs-5 text-center text-white">
+                                <%= val.pages %>
+                            </td>
+                            <td class="fs-5 text-center text-white">
+                                <%= val.language %>
+                            </td>
+                            <td class="fs-5 text-center text-white">
+                                <%= val.description %>
+                            </td>
+                            <td class="fs-5 text-center text-white">
+                                <button class="btn btn-outline-danger">
+                                    <a href="/deleteData/<%= val.id %>" class="text-decoration-none text-white fs-6">Delete</a>
+                                </button>
+                                <buuton class="btn btn-outline-warning">
+                                    <a href="/editData/<%= val.id %>" class="text-decoration-none text-white fs-6">Edit</a>
+                                </buuton>
+                            </td>
+                        </tr>
+                        <% }) %>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

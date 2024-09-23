@@ -1,0 +1,18 @@
+body{
+    background-image: url('../images/bg9.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    background-position: center;
+    /* backdrop-filter: blur(5px); */
+}
+
+.table, .table tr, .table thead th, .table tbody td {
+    background-color: transparent !important;
+}
+
+.table{
+    background-color: rgba(255, 255, 255, 0.206) !important; /* Light translucent background */
+    backdrop-filter: blur(20px); /* Adjust the blur strength */
+    border-radius: 20px !important;
+}
